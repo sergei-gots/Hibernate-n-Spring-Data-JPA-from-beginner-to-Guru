@@ -65,4 +65,8 @@ public class Book {
                 ", publisher='" + publisher + '\'' +
                 '}';
     }
+
+    public void print() {
+        System.out.println(this);
+    }
 }
