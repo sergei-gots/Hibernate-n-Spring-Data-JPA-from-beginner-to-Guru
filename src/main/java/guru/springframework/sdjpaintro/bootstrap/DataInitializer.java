@@ -8,6 +8,8 @@ import org.springframework.stereotype.Component;
 import static java.lang.System.out;
 
 /**
+ * This class implements {@link CommandLineRunner}
+ * It is why we can call it kinda `Bootstrap-Data-Initializer`.
  * Created by sergei on 26/05/2024
  */
 @Component
@@ -23,19 +25,19 @@ public class DataInitializer implements CommandLineRunner {
     public void run(String... args) throws Exception {
         out.println("Hello World with DataInitializer!");
 
-        Book bookDdd = new Book("Domain Driven Design", "123", "Random House");
-        out.println("bookDdd = " + bookDdd);
+        Book book1 = new Book("Domain Driven Design", "123", "Random House");
+        out.println("book1 = " + book1);
 
-        Book savedDdd = bookRepository.save(bookDdd);
-        out.println("bookDdd (after save) = " + bookDdd);
-        out.println("savedDdd = " + savedDdd);
+        Book savedBook1 = bookRepository.save(book1);
+        out.println("book1 (after save) = " + book1);
+        out.println("savedBook1 = " + savedBook1);
 
-        Book bookSia = new Book("Spring In Action", "234234", "Oriely");
-        out.println("bookSia = " + bookSia);
+        Book book2 = new Book("Spring In Action", "234234", "Oriely");
+        out.println("book2 = " + book2);
 
-        Book savedSia = bookRepository.save(bookSia);
-        out.println("bookSia (after save) = " + bookSia);
-        out.println("savedSia = " + savedSia);
+        Book savedBook2 = bookRepository.save(book2);
+        out.println("book2 (after save) = " + book2);
+        out.println("savedBook2 = " + savedBook2);
 
         bookRepository.findAll().forEach(Book::print);
 
