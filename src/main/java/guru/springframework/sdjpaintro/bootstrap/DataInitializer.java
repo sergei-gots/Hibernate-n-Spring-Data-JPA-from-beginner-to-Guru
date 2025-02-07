@@ -9,7 +9,8 @@ import static java.lang.System.out;
 
 /**
  * This class implements {@link CommandLineRunner}
- * It is why we can call it kinda `Bootstrap-Data-Initializer`.
+ * It is why we can call it kinda `Bootstrap-Data-Initializer`
+ * in order to set up some initial data to be persisted in the database.
  * Created by sergei on 26/05/2024
  */
 @Component
@@ -24,6 +25,13 @@ public class DataInitializer implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         out.println("Hello World with DataInitializer!");
+
+        long bookCount = bookRepository.count();
+        if (bookCount > 0) {
+            out.println("The book's table already contains some data. So we won't have to add the initial data:)");
+            out.println("Book Count = " + bookCount);
+            return;
+        }
 
         Book book1 = new Book("Domain Driven Design", "123", "Random House");
         out.println("book1 = " + book1);
