@@ -23,7 +23,7 @@ public class SpringBootDataJpaMySqlIntegrationSliceTest {
     BookRepository bookRepository;
 
     @Test
-    void mySqlTest() {
+    void testMySql() {
         long countBefore = bookRepository.count();
         assertThat(countBefore).isEqualTo(2);
     }
