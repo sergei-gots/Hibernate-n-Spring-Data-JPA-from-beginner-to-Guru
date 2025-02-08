@@ -3,6 +3,7 @@ package guru.springframework.sdjpaintro.bootstrap;
 import guru.springframework.sdjpaintro.domain.Book;
 import guru.springframework.sdjpaintro.repositories.BookRepository;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 import static java.lang.System.out;
@@ -13,6 +14,7 @@ import static java.lang.System.out;
  * in order to set up some initial data to be persisted in the database.
  * Created by sergei on 26/05/2024
  */
+@Profile({"default", "local"})
 @Component
 public class DataInitializer implements CommandLineRunner {
 
@@ -24,14 +26,10 @@ public class DataInitializer implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        out.println("Hello World with DataInitializer!");
 
-        long bookCount = bookRepository.count();
-        if (bookCount > 0) {
-            out.println("The book's table already contains some data. So we won't have to add the initial data:)");
-            out.println("Book Count = " + bookCount);
-            return;
-        }
+        out.println("DataInitializer is being run!");
+
+        bookRepository.deleteAll();
 
         Book book1 = new Book("Domain Driven Design", "123", "Random House");
         out.println("book1 = " + book1);

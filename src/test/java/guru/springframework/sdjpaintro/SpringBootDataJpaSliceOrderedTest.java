@@ -25,7 +25,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @ComponentScan("guru.springframework.sdjpaintro.bootstrap")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @DataJpaTest
-public class SpringBootJpaSliceCommitsOrderedTest {
+public class SpringBootDataJpaSliceOrderedTest {
 
     @Autowired
     BookRepository bookRepository;
