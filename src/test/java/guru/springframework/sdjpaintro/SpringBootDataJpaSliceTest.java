@@ -18,7 +18,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  */
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @DataJpaTest
-public class SpringBootJpaSliceTest {
+public class SpringBootDataJpaSliceTest {
 
     @Autowired
     BookRepository bookRepository;

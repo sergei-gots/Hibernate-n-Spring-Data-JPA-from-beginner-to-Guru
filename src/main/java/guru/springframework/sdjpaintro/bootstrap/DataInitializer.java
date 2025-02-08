@@ -3,15 +3,18 @@ package guru.springframework.sdjpaintro.bootstrap;
 import guru.springframework.sdjpaintro.domain.Book;
 import guru.springframework.sdjpaintro.repositories.BookRepository;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 import static java.lang.System.out;
 
 /**
  * This class implements {@link CommandLineRunner}
- * It is why we can call it kinda `Bootstrap-Data-Initializer`.
+ * It is why we can call it kinda `Bootstrap-Data-Initializer`
+ * in order to set up some initial data to be persisted in the database.
  * Created by sergei on 26/05/2024
  */
+@Profile({"default", "local"})
 @Component
 public class DataInitializer implements CommandLineRunner {
 
@@ -23,7 +26,10 @@ public class DataInitializer implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        out.println("Hello World with DataInitializer!");
+
+        out.println("DataInitializer is being run!");
+
+        bookRepository.deleteAll();
 
         Book book1 = new Book("Domain Driven Design", "123", "Random House");
         out.println("book1 = " + book1);

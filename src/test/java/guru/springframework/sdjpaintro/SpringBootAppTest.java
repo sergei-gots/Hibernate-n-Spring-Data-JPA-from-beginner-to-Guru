@@ -13,7 +13,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  * Created by sergei on 04/02/2025
  */
 @SpringBootTest
-class SdjpaIntroApplicationTests {
+class SpringBootAppTest {
 
 	@Autowired
 	BookRepository bookRepository;
