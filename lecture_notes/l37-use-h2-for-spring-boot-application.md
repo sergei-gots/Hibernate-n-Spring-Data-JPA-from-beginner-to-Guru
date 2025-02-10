@@ -1,4 +1,5 @@
-# Lesson 37. Use H2 for Spring Boot Application 
+## Lesson 37 
+# Use H2 for Spring Boot Application 
 
 What will happen if we run our application without the local profile enabled?  
 So remember, the 'local' profile brings in the MySQL stuff.
