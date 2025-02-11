@@ -17,8 +17,8 @@ https://docs.liquibase.com/tools-integrations/maven/maven-pom-file.html
 				<configuration>
 					<propertyFileWillOverride>false</propertyFileWillOverride>
 					<url>jdbc:mysql://127.0.0.1:3306/bookdb?\
-						useUnicode=true&amp;\
-						characterEncoding=UTF-8&amp;\
+						useUnicode=true&amp;
+						characterEncoding=UTF-8&amp;
 						serverTimezone=UTC</url>
 					<username>bookadmin</username>
 					<password>password</password>
