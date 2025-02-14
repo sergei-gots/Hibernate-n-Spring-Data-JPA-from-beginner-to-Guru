@@ -39,6 +39,10 @@
 			<version>${mysql-connector-j.version}</version>
 		</dependency>
 		<dependency>
+			<groupId>org.liquibase</groupId>
+			<artifactId>liquibase-core</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
 			<scope>test</scope>
@@ -59,9 +63,9 @@
 					<url>jdbc:mysql://127.0.0.1:3306/bookdb?useUnicode=true&amp;characterEncoding=UTF-8&amp;serverTimezone=UTC</url>
 					<username>bookadmin</username>
 					<password>password</password>
-					<outputChangeLogFile>lecture_notes/output_files/lesson-41--changelog.xml</outputChangeLogFile>
+					<outputChangeLogFile>lecture_notes/output_files/lesson-41--changelog11.xml</outputChangeLogFile>
 					<changeSetAuthor>SG</changeSetAuthor>
-					<changeLogSchemaName>bookdb</changeLogSchemaName>
+					<!--changeLogSchemaName>bookdb</changeLogSchemaName-->
 				</configuration>
 				<dependencies>
 					<dependency>

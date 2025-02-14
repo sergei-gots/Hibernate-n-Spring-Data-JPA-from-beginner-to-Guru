@@ -1,3 +1,6 @@
+-- LESSON 24
+-- Create Users and Schema
+-- initial script for SQL Client (e.g. dBeaver)
 DROP DATABASE IF EXISTS `bookdb`;
 DROP USER IF EXISTS `bookadmin`@`%`;
 DROP USER IF EXISTS `bookuser`@`%`;

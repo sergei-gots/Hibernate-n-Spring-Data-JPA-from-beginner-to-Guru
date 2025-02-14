@@ -1,4 +1,6 @@
 -- LESSON 35 Schema Initialization with Hibernate
+-- should be place under classpath, i.e. able to be found as /resources/schema.sql
+-- to be founded with Hibernate Database Generation Tool
 
 DROP TABLE IF EXISTS book;
 DROP TABLE IF EXISTS book_seq;
