@@ -1,6 +1,8 @@
 package guru.springframework.sdjpaintro.bootstrap;
 
+import guru.springframework.sdjpaintro.domain.Author;
 import guru.springframework.sdjpaintro.domain.Book;
+import guru.springframework.sdjpaintro.repositories.AuthorRepository;
 import guru.springframework.sdjpaintro.repositories.BookRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Profile;
@@ -19,9 +21,11 @@ import static java.lang.System.out;
 public class DataInitializer implements CommandLineRunner {
 
     private final BookRepository bookRepository;
+    private final AuthorRepository authorRepository;
 
-    public DataInitializer(BookRepository bookRepository) {
+    public DataInitializer(BookRepository bookRepository, AuthorRepository authorRepository) {
         this.bookRepository = bookRepository;
+        this.authorRepository = authorRepository;
     }
 
     @Override
@@ -46,6 +50,13 @@ public class DataInitializer implements CommandLineRunner {
         out.println("savedBook2 = " + savedBook2);
 
         bookRepository.findAll().forEach(Book::print);
+
+        authorRepository.deleteAll();
+
+        Author author = new Author("Donal", "Knuth");
+        authorRepository.save(author);
+        authorRepository.findAll().forEach(Author::print);
+
 
     }
 }
