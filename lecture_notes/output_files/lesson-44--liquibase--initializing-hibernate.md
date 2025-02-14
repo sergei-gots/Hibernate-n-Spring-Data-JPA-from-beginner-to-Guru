@@ -1,5 +1,5 @@
 ## Lesson 44 
-#  Initializing Hibernate
+#  making Hibernate happy::) Initializing Data with Spring
 
 What are we going to do to complete building our database's initial state,
 is to add to the <code>book_seq</code> the initial value in order to make
