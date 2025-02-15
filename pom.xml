@@ -39,10 +39,6 @@
 			<version>${mysql-connector-j.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>org.liquibase</groupId>
-			<artifactId>liquibase-core</artifactId>
-		</dependency>
-		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
 			<scope>test</scope>
@@ -54,26 +50,6 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-			<plugin>
-				<groupId>org.liquibase</groupId>
-				<artifactId>liquibase-maven-plugin</artifactId>
-				<configuration>
-					<propertyFileWillOverride>false</propertyFileWillOverride>
-					<url>jdbc:mysql://127.0.0.1:3306/bookdb?useUnicode=true&amp;characterEncoding=UTF-8&amp;serverTimezone=UTC</url>
-					<username>bookadmin</username>
-					<password>password</password>
-					<outputChangeLogFile>lecture_notes/output_files/lesson-41--changelog11.xml</outputChangeLogFile>
-					<changeSetAuthor>SG</changeSetAuthor>
-					<!--changeLogSchemaName>bookdb</changeLogSchemaName-->
-				</configuration>
-				<dependencies>
-					<dependency>
-						<groupId>com.mysql</groupId>
-						<artifactId>mysql-connector-j</artifactId>
-						<version>${mysql-connector-j.version}</version>
-					</dependency>
-				</dependencies>
 			</plugin>
 		</plugins>
 	</build>
