@@ -5,6 +5,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
+import java.util.Objects;
+
 @Entity
 public class Book {
 
@@ -14,14 +16,16 @@ public class Book {
     private String title;
     private String isbn;
     private String publisher;
+    private Long authorId;
 
     public Book() {
     }
 
-    public Book(String title, String isbn, String publisher) {
+    public Book(String title, String isbn, String publisher, Long authorId) {
         this.title = title;
         this.isbn = isbn;
         this.publisher = publisher;
+        this.authorId = authorId;
     }
 
     public Long getId() {
@@ -56,6 +60,10 @@ public class Book {
         this.publisher = publisher;
     }
 
+    public Long getAuthorId() { return authorId; }
+
+    public void setAuthorId(Long authorId) { this.authorId = authorId; }
+
     @Override
     public String toString() {
         return "Book{" +
@@ -68,5 +76,16 @@ public class Book {
 
     public void print() {
         System.out.println(this);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (!(o instanceof Book book)) return false;
+        return Objects.equals(id, book.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }

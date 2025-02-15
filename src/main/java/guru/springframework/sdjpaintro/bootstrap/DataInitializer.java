@@ -35,14 +35,14 @@ public class DataInitializer implements CommandLineRunner {
 
         bookRepository.deleteAll();
 
-        Book book1 = new Book("Domain Driven Design", "123", "Random House");
+        Book book1 = new Book("Domain Driven Design", "123", "Random House", null);
         out.println("book1 = " + book1);
 
         Book savedBook1 = bookRepository.save(book1);
         out.println("book1 (after save) = " + book1);
         out.println("savedBook1 = " + savedBook1);
 
-        Book book2 = new Book("Spring In Action", "234234", "Oriely");
+        Book book2 = new Book("Spring In Action", "234234", "Oriely", null);
         out.println("book2 = " + book2);
 
         Book savedBook2 = bookRepository.save(book2);
