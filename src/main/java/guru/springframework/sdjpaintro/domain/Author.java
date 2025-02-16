@@ -1,11 +1,11 @@
 package guru.springframework.sdjpaintro.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import org.hibernate.annotations.JdbcTypeCode;
 
+import java.sql.Types;
 import java.util.Objects;
+import java.util.UUID;
 
 /**
  * Created by sergei on 14/02/2025
@@ -13,8 +13,10 @@ import java.util.Objects;
 @Entity
 public class Author {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @JdbcTypeCode(value=Types.VARCHAR)
+    @Column(length = 36, columnDefinition = "VARCHAR(36)", updatable = false, nullable = false)
+    private UUID id;
     private String firstName;
     private String lastName;
 
@@ -34,11 +36,11 @@ public class Author {
                 '}';
     }
 
-    public long getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 
