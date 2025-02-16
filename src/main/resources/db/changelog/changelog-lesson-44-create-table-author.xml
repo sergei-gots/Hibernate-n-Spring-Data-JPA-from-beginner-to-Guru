@@ -8,13 +8,9 @@
             <column name="first_name" type="VARCHAR(255)"/>
             <column name="last_name" type="VARCHAR(255)"/>
         </createTable>
-    </changeSet>
-    <changeSet author="SG" id="005-create-table-author-seq">
         <createTable tableName="author_seq">
             <column name="next_val" type="BIGINT"/>
         </createTable>
-    </changeSet>
-    <changeSet author="SG" id="006-populate-table-author-seq-with-values">
         <sql>INSERT INTO author_seq VALUES(0)</sql>
-        </changeSet>
+    </changeSet>
 </databaseChangeLog>
