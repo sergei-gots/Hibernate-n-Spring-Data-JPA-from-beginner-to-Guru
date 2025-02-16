@@ -53,10 +53,9 @@ public class DataInitializer implements CommandLineRunner {
 
         authorRepository.deleteAll();
 
-        Author author = new Author("Donal", "Knuth");
+        Author author = new Author("Donald", "Knuth");
         authorRepository.save(author);
         authorRepository.findAll().forEach(Author::print);
-
 
     }
 }
