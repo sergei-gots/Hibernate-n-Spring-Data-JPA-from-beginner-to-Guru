@@ -39,16 +39,17 @@ public class SpringBootDataJpaSliceTest {
         assertThat(countBefore).isEqualTo(2);
 
         String isbn = "ISBN-Lesson-29";
-        Book savedBook = bookRepository.save(new Book("Spring Boot Slice Test in action. Bootstrap for data", isbn, "MySelf", null));
+        Book saved = bookRepository.save(new Book("Spring Boot Slice Test in action. Bootstrap for data", isbn, "MySelf", null));
         long countAfter = bookRepository.count();
 
         assertThat(countBefore).isLessThan(countAfter);
-        assertThat(savedBook.getId()).isNotNull();
+        assertThat(saved).isNotNull();
+        assertThat(saved.getId()).isNotNull();
 
-        Book gotBook = bookRepository.getReferenceById(savedBook.getId());
-        assertThat(gotBook).isNotNull();
-        assertThat(gotBook.getId()).isEqualTo(savedBook.getId());
-        assertThat(gotBook.getIsbn()).isEqualTo(isbn);
+        Book fetched = bookRepository.getReferenceById(saved.getId());
+        assertThat(fetched).isNotNull();
+        assertThat(fetched.getId()).isEqualTo(saved.getId());
+        assertThat(fetched.getIsbn()).isEqualTo(isbn);
     }
 
     @Order(2)
@@ -65,17 +66,17 @@ public class SpringBootDataJpaSliceTest {
         Author author = new Author(firstName, "Derrida");
 
         long countBefore = authorRepository.count();
-        Author savedAuthor = authorRepository.save(author);
+        Author saved = authorRepository.save(author);
         long countAfter = authorRepository.count();
 
         assertThat(countAfter).isEqualTo(countBefore+1);
-        assertThat(savedAuthor).isNotNull();
-        assertThat(savedAuthor.getId()).isNotNull();
-        assertThat(savedAuthor.getFirstName()).isEqualTo(firstName);
+        assertThat(saved).isNotNull();
+        assertThat(saved.getId()).isNotNull();
+        assertThat(saved.getFirstName()).isEqualTo(firstName);
 
-        Author gotAuthor = authorRepository.getReferenceById(savedAuthor.getId());
+        Author fetched = authorRepository.getReferenceById(saved.getId());
 
-        assertThat(gotAuthor).isEqualTo(savedAuthor);
-        assertThat(gotAuthor.getFirstName()).isEqualTo(firstName);
+        assertThat(fetched).isEqualTo(saved);
+        assertThat(fetched.getFirstName()).isEqualTo(firstName);
     }
 }
