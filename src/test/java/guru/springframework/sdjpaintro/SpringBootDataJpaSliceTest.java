@@ -2,7 +2,9 @@ package guru.springframework.sdjpaintro;
 
 import guru.springframework.sdjpaintro.domain.Author;
 import guru.springframework.sdjpaintro.domain.Book;
+import guru.springframework.sdjpaintro.domain.BookNatural;
 import guru.springframework.sdjpaintro.repositories.AuthorRepository;
+import guru.springframework.sdjpaintro.repositories.BookNaturalRepository;
 import guru.springframework.sdjpaintro.repositories.BookRepository;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
@@ -30,6 +32,9 @@ public class SpringBootDataJpaSliceTest {
 
     @Autowired
     AuthorRepository authorRepository;
+
+    @Autowired
+    BookNaturalRepository bookNaturalRepository;
 
     @Commit
     @Order(1)
@@ -76,7 +81,33 @@ public class SpringBootDataJpaSliceTest {
 
         Author fetched = authorRepository.getReferenceById(saved.getId());
 
+        assertThat(fetched).isNotNull();
         assertThat(fetched).isEqualTo(saved);
         assertThat(fetched.getFirstName()).isEqualTo(firstName);
+    }
+
+    @Test
+    void testJpaBookNaturalTestSplice() {
+
+        String firstName = "Jaques";
+        BookNatural bookNatural = new BookNatural(
+                "Structure, Sign and Play in the Discourse of the Human Sciences",
+                "ISBN-1996-001",
+                "Science Publisher"
+        );
+
+        long countBefore = bookNaturalRepository.count();
+        BookNatural saved = bookNaturalRepository.save(bookNatural);
+        long countAfter = bookNaturalRepository.count();
+
+        assertThat(countAfter).isEqualTo(countBefore+1);
+        assertThat(saved).isNotNull();
+        assertThat(saved.getIsbn()).isNotNull();
+        assertThat(saved).isEqualTo(bookNatural);
+
+        BookNatural fetched = bookNaturalRepository.getReferenceById(saved.getIsbn());
+
+        assertThat(fetched).isNotNull();
+        assertThat(fetched).isEqualTo(saved);
     }
 }
