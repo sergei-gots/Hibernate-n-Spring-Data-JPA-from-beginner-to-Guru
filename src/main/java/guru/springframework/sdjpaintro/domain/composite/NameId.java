@@ -1,11 +1,14 @@
 package guru.springframework.sdjpaintro.domain.composite;
 
+import jakarta.persistence.Embeddable;
+
 import java.io.Serializable;
 import java.util.Objects;
 
 /**
  * Created by sergei on 17/02/2025
  */
+@Embeddable
 public class NameId implements Serializable {
 
     private String firstName;

@@ -4,8 +4,10 @@ import guru.springframework.sdjpaintro.domain.Author;
 import guru.springframework.sdjpaintro.domain.Book;
 import guru.springframework.sdjpaintro.domain.BookNatural;
 import guru.springframework.sdjpaintro.domain.composite.AuthorCompositeKey;
+import guru.springframework.sdjpaintro.domain.composite.AuthorEmbeddedKey;
 import guru.springframework.sdjpaintro.domain.composite.NameId;
 import guru.springframework.sdjpaintro.repositories.AuthorCompositeKeyRepository;
+import guru.springframework.sdjpaintro.repositories.AuthorEmbeddedKeyRepository;
 import guru.springframework.sdjpaintro.repositories.AuthorRepository;
 import guru.springframework.sdjpaintro.repositories.BookNaturalRepository;
 import guru.springframework.sdjpaintro.repositories.BookRepository;
@@ -41,6 +43,9 @@ public class SpringBootDataJpaSliceTest {
 
     @Autowired
     AuthorCompositeKeyRepository authorCompositeKeyRepository;
+
+    @Autowired
+    AuthorEmbeddedKeyRepository authorEmbeddedKeyRepository;
 
     @Commit
     @Order(1)
@@ -136,6 +141,26 @@ public class SpringBootDataJpaSliceTest {
         assertThat(saved).isEqualTo(author);
 
         AuthorCompositeKey fetched = authorCompositeKeyRepository.getReferenceById(nameId);
+
+        assertThat(fetched).isNotNull();
+        assertThat(fetched).isEqualTo(saved);
+    }
+
+    @Test
+    void testJpaAuthorEmbeddedKeyTestSplice() {
+
+        NameId nameId = new NameId("John", "T");
+        AuthorEmbeddedKey author = new AuthorEmbeddedKey(nameId, "US");
+
+        long countBefore = authorCompositeKeyRepository.count();
+        AuthorEmbeddedKey saved = authorEmbeddedKeyRepository.save(author);
+        long countAfter = authorCompositeKeyRepository.count();
+
+        assertThat(countAfter).isEqualTo(countBefore+1);
+        assertThat(saved).isNotNull();
+        assertThat(saved).isEqualTo(author);
+
+        AuthorEmbeddedKey fetched = authorEmbeddedKeyRepository.getReferenceById(nameId);
 
         assertThat(fetched).isNotNull();
         assertThat(fetched).isEqualTo(saved);
